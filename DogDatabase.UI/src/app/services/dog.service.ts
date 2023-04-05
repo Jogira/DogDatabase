@@ -8,11 +8,10 @@ import { Observable } from 'rxjs/internal/Observable';
   providedIn: 'root'
 })
 export class DogService {
-  private url = "Dog";
+  private url = "DogDatabase";
   constructor(private http: HttpClient) { }
 
-  public getDogs(): Observable<Dog[]> 
-  {
+  public getDogs(): Observable<Dog[]> {
     return this.http.get<Dog[]>(`${environment.apiUrl}/${this.url}`)
   };
 
