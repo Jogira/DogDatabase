@@ -12,13 +12,11 @@ export class AppComponent {
 
 
 
-dogs: Dog[] = [];
+  dogs: Dog[] = [];
 
   constructor(private DogService: DogService) { };
 
   ngOnInit(): void {
-    console.log("Hello World");
-    this.dogs = this.DogService.getDogs();
-    console.log(this.dogs);
+    this.DogService.getDogs().subscribe((result: Dog[]) => (this.dogs = result));
   };
 }

@@ -1,23 +1,19 @@
 import { Injectable } from '@angular/core';
 import { Dog } from '../models/dog-database';
+import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
+import { Observable } from 'rxjs/internal/Observable';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DogService {
+  private url = "Dog";
+  constructor(private http: HttpClient) { }
 
-  constructor() { }
-
-  public getDogs() : Dog[]
+  public getDogs(): Observable<Dog[]> 
   {
-    let dog = new Dog();
-    dog.id = 1;
-    dog.name = "Bacardi DDog"
-    dog.firstName = "Bolt"
-    dog.lastName = "Bepper"
-    dog.breed = "Morkie"
-
-    return [dog];
+    return this.http.get<Dog[]>(`${environment.apiUrl}/${this.url}`)
   };
 
 }
