@@ -6,10 +6,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { Dog } from './models/dog-database';
+import { EditDogComponent } from './components/edit-dog/edit-dog.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    EditDogComponent
   ],
   imports: [
     BrowserModule,
