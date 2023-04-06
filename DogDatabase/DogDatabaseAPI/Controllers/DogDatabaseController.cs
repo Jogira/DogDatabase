@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace DogDatabaseAPI.Controllers
 {
@@ -7,18 +8,18 @@ namespace DogDatabaseAPI.Controllers
     [ApiController]
     public class DogDatabaseController : ControllerBase
     {
+        private readonly DataContext _context;
+
+        public DogDatabaseController(DataContext context)
+        {
+            _context = context;
+        }
+
         [HttpGet]
         public async Task<ActionResult<List<Dog>>> GetDogs()
         {
-            return new List<Dog>
+            return Ok(await _context.Dogs.ToListAsync());
             {
-                new Dog
-                {
-                    Name = "Bolt Barcardi",
-                    FirstName = "Odyssesus",
-                    LastName = "Apollo",
-                    Breed = "Morkie"
-                }
             };
         }
     }
