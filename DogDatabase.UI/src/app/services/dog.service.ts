@@ -12,7 +12,27 @@ export class DogService {
   constructor(private http: HttpClient) { }
 
   public getDogs(): Observable<Dog[]> {
-    return this.http.get<Dog[]>(`${environment.apiUrl}/${this.url}`)
+    return this.http.get<Dog[]>(`${environment.apiUrl}/${this.url}`);
+  };
+
+
+  public updateDog(dog: Dog): Observable<Dog[]> {
+
+    return this.http.put<Dog[]>(`${environment.apiUrl}/${this.url}`, dog);
+  };
+
+  public createDog(dog: Dog): Observable<Dog[]> {
+    return this.http.post<Dog[]>(`${environment.apiUrl}/${this.url}`, dog, {
+      headers: {
+
+      }
+    }
+    );
+  };
+
+
+  public deleteDog(dog: Dog): Observable<Dog[]> {
+    return this.http.post<Dog[]>(`${environment.apiUrl}/${this.url}/${dog.id}`, dog);
   };
 
 }

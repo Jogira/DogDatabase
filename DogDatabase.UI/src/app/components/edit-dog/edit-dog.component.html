@@ -1,1 +1,22 @@
-<p>edit-dog works!</p>
+<div *ngIf="dog">
+    <h2>{{ dog.name }}</h2>
+    <div>
+        Name:
+        <input [(ngModel)]="dog.name" placeholder="Name" />
+    </div>
+    <div>
+        First Name:
+        <input [(ngModel)]="dog.firstName" placeholder="First Name" />
+    </div>
+    <div>
+        Last Name:
+        <input [(ngModel)]="dog.lastName" placeholder="Last Name" />
+    </div>
+    <div>
+        Breed:
+        <input [(ngModel)]="dog.breed" placeholder="Breed" />
+    </div>
+    <button (click)="updateDog(dog)" *ngIf="dog.id"> Save </button>
+    <button (click)="deleteDog(dog)" *ngIf="dog.id"> Delete </button>
+    <button (click)="createDog(dog)" *ngIf="!dog.id"> Create </button>
+</div>

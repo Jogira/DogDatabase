@@ -17,7 +17,7 @@ builder.Services.AddDbContext<DataContext>(options =>
 
 builder.Services.AddCors(options => options.AddPolicy(name: "DogOrigins", policy =>
 {
-    policy.WithOrigins("http://localhost:4200/").AllowAnyMethod().AllowAnyHeader();
+    policy.WithOrigins("http://localhost:4200/").AllowAnyMethod().AllowAnyHeader().AllowAnyOrigin();
 }));
 
 var app = builder.Build();

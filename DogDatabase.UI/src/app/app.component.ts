@@ -10,13 +10,24 @@ import { DogService } from './services/dog.service';
 export class AppComponent {
   title = 'DogDatabase.UI';
 
-
-
   dogs: Dog[] = [];
+  dogToEdit?: Dog;
 
   constructor(private DogService: DogService) { };
 
   ngOnInit(): void {
     this.DogService.getDogs().subscribe((result: Dog[]) => (this.dogs = result));
   };
+
+  initNewDog() {
+    this.dogToEdit = new Dog();
+  }
+
+  editDog(dog: Dog) {
+    this.dogToEdit = dog;
+  }
+
+  updateDogList(dogs: Dog[]) {
+    this.dogs = dogs;
+  }
 }
